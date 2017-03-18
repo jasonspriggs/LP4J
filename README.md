@@ -1,7 +1,7 @@
 LP4J-MK2 - A Launchpad MK2 API for Java
 ====
 
-[![Build Status](https://travis-ci.org/JasonSpriggs/LP4J.svg)](https://travis-ci.org/OlivierCroisier/LP4J)
+[![Build Status](https://travis-ci.org/JasonSpriggs/LP4J.svg)](https://travis-ci.org/JasonSpriggs/LP4J)
 
 Launchpad is a midi device built by Novation, used to drive computer-assisted music creation applications such as Ableton Live.
 
