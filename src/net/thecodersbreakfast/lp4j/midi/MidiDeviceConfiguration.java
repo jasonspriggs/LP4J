@@ -33,8 +33,8 @@ import javax.sound.midi.MidiUnavailableException;
  */
 public class MidiDeviceConfiguration {
 
-    /** Device signature of a Launchpad S, used for autodetection. */
-    public static final String DEVICE_SIGNATURE = "Launchpad S";
+    /** Device signature of a Launchpad MK2, used for autodetection. */
+    public static final String DEVICE_SIGNATURE = "Launchpad MK2";
 
     /** Inbound communication channel. */
     private final MidiDevice inputDevice;
@@ -112,7 +112,7 @@ public class MidiDeviceConfiguration {
     public static MidiDevice autodetectInputDevice() throws MidiUnavailableException {
         MidiDevice.Info[] midiDeviceInfo = MidiSystem.getMidiDeviceInfo();
         for (MidiDevice.Info info : midiDeviceInfo) {
-            if (info.getDescription().contains(DEVICE_SIGNATURE)) {
+            if (info.getDescription().contains(DEVICE_SIGNATURE) || info.getName().contains(DEVICE_SIGNATURE)) {
                 MidiDevice device = MidiSystem.getMidiDevice(info);
                 if (device.getMaxTransmitters() == -1) {
                     return device;
