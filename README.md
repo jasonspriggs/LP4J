@@ -1,22 +1,20 @@
-LP4J - A Launchpad API for Java
+LP4J-MK2 - A Launchpad MK2 API for Java
 ====
 
-[![Build Status](https://travis-ci.org/OlivierCroisier/LP4J.svg)](https://travis-ci.org/OlivierCroisier/LP4J)
+[![Build Status](https://travis-ci.org/JasonSpriggs/LP4J.svg)](https://travis-ci.org/OlivierCroisier/LP4J)
 
 Launchpad is a midi device built by Novation, used to drive computer-assisted music creation applications such as Ableton Live.
 
-The device is a square board with a 8x8 pads grid, surrounded by round command buttons. Pads and buttons can be lit in various tints of yellow, red and green.
+The device is a square board with a 8x8 pads grid, surrounded by round command buttons. Pads and buttons can be lit in various colors.
 This makes the Launchpad an interesting general-purpose I/O device, where a user can press pads and buttons to send commands to an application, and provide feedback with its 8x8 matrix of colored leds.
 
 ![Launchpad](launchpad.jpg)
 
-LP4J is a lightweight Java API allowing any Java application to interact with a Launchpad S (second generation).
-It also provides a embedded, web-based emulator to allow developers to design and test applications should they not have access to a physical device.
+LP4J-MK2 is a lightweight Java API allowing any Java application to interact with a Launchpad MK2. It was forked from Olivier Croisier's library, [lp4j](https://github.com/OlivierCroisier/LP4J).
 
 The API is split in 3 submodules :
 - lp4j-api : an abstract, high-level API defining how to interact with a Launchpad (LaunchpadClient / LaunchpadListener)
 - lp4j-midi : a MIDI implementation of the API, suitable to interact with a physical device.
-- lp4j-emulator : a web-based emulator, using SVG and websockets.
 
 How to use LP4J
 ====
@@ -28,9 +26,6 @@ First, you need to get a reference to a Launchpad :
 ```java
     // Physical device (with auto-detected ports configuration)
     Launchpad launchpad = new MidiLaunchpad(MidiDeviceConfiguration.autodetect());
-
-    // Or start the emulator on http://localhost:9000
-    Launchpad launchpad = new EmulatorLaunchpad(9000);
 ```
 
 From this Launchpad instance, you can :
@@ -70,7 +65,7 @@ public class Example {
 
     public static void main(String[] args) throws Exception {
 
-        Launchpad launchpad = new EmulatorLaunchpad(9000);
+        Launchpad launchpad = new MidiLaunchpad(MidiDeviceConfiguration.autodetect());
         LaunchpadClient client = launchpad.getClient();
 
         MyListener myListener = new MyListener(client);
