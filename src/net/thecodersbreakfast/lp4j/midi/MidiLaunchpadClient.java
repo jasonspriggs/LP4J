@@ -302,7 +302,7 @@ public class MidiLaunchpadClient implements LaunchpadClient {
      * @return The low-level representation of those coordinates.
      */
     private int toRawCoords(int x, int y) {
-        return x + 16 * y;
+        return ((y + 1) * 10) + (x + 1);
     }
 
 }

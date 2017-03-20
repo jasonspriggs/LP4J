@@ -29,14 +29,14 @@ public final class Color {
     /** Minimal red or green component intensity */
     public static final int MIN_INTENSITY = 0;
     /** Maximal red or green component intensity */
-    public static final int MAX_INTENSITY = 3;
+    public static final int MAX_INTENSITY = 7;
 
     // Color cache
-    private static final Color[][] CACHE = new Color[4][4];
+    private static final Color[][] CACHE = new Color[8][8];
 
     static {
-        for (int r = 0; r < 4; r++) {
-            for (int g = 0; g < 4; g++) {
+        for (int r = 0; r < 8; r++) {
+            for (int g = 0; g < 8; g++) {
                 CACHE[r][g] = new Color(r, g);
             }
         }

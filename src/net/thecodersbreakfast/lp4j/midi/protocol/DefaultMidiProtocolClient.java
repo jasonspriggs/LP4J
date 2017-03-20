@@ -103,9 +103,9 @@ public class DefaultMidiProtocolClient implements MidiProtocolClient {
     @Override
     public void brightness(int numerator, int denominator) throws InvalidMidiDataException {
         if (numerator < 9) {
-            sendShortMessage(ShortMessage.CONTROL_CHANGE, 30, 16 * (numerator - 1) + (denominator - 3));
+            sendShortMessage(ShortMessage.CONTROL_CHANGE, 30, 10 * (numerator - 1) + (denominator - 3));
         } else {
-            sendShortMessage(ShortMessage.CONTROL_CHANGE, 31, 16 * (numerator - 9) + (denominator - 3));
+            sendShortMessage(ShortMessage.CONTROL_CHANGE, 31, 10 * (numerator - 9) + (denominator - 3));
         }
     }
 

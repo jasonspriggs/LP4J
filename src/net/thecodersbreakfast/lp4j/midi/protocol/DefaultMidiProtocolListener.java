@@ -42,11 +42,12 @@ public class DefaultMidiProtocolListener implements MidiProtocolListener {
     /** {@inheritDoc} */
     @Override
     public void onNoteOn(int note, long timestamp) {
+    	System.out.print(note + "\t");
         if (listener == null) {
             return;
         }
-        int x = note % 16;
-        int y = note / 16;
+        int x = (note - 1) % 10;
+        int y = (note - 10) / 10;
         if (x >= 8) {
             Button button = Button.atRight(y);
             listener.onButtonPressed(button, timestamp);
@@ -64,8 +65,8 @@ public class DefaultMidiProtocolListener implements MidiProtocolListener {
         if (listener == null) {
             return;
         }
-        int x = note % 16;
-        int y = note / 16;
+        int x = (note - 1) % 10;
+        int y = (note - 10) / 10;
         if (x >= 8) {
             Button button = Button.atRight(y);
             listener.onButtonReleased(button, timestamp);

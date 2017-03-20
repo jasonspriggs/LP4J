@@ -16,11 +16,12 @@ public class Runner {
 
         MyListener myListener = new MyListener(client);
         launchpad.setListener(myListener);
-
-        // Set a red light under the STOP button
-        client.reset();
-        //client.setButtonLight(Button.STOP, Color.RED, BackBufferOperation.NONE);
-        client.scrollText("test", Color.YELLOW, ScrollSpeed.SPEED_MIN, false, BackBufferOperation.CLEAR);
+        
+        for(int x = 0; x <= Color.MAX_INTENSITY; x++) {
+        	for(int y = 0; y <= Color.MAX_INTENSITY; y++) {
+        		client.setPadLight(Pad.at(x, y), Color.of(x, y), BackBufferOperation.NONE);
+        	}
+        }
         
         stop.await();
         client.reset();
@@ -37,12 +38,18 @@ public class Runner {
 
         @Override
         public void onPadReleased(Pad pad, long timestamp) {
-            System.out.println(pad);
+            System.out.println(pad + "\t" + timestamp);
+            client.setPadLight(pad, Color.YELLOW, BackBufferOperation.CLEAR);
+            
         }
 
         @Override
         public void onButtonReleased(Button button, long timestamp) {
         	System.out.println(button);
+            client.setButtonLight(button, Color.AMBER, BackBufferOperation.CLEAR);
+            if(button == Button.MIXER) {
+            	client.reset();
+            }
         }
     }
 

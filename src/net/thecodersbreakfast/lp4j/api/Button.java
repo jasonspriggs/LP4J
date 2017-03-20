@@ -40,21 +40,21 @@ public enum Button {
     /** The MIXER button (8th position from the left, on the top row) */
     MIXER(7, true),
     /** The VOL button (1st position from the top, on the right side) */
-    VOL(0, false),
+    VOL(7, false),
     /** The PAN button (2nd position from the top, on the right side) */
-    PAN(1, false),
+    PAN(6, false),
     /** The SND_A button (3rd position from the top, on the right side) */
-    SND_A(2, false),
+    SND_A(5, false),
     /** The SND_B button (4th position from the top, on the right side) */
-    SND_B(3, false),
+    SND_B(4, false),
     /** The STOP button (5th position from the top, on the right side) */
-    STOP(4, false),
+    STOP(3, false),
     /** The TRACK_ON button (6th position from the top, on the right side) */
-    TRACK_ON(5, false),
+    TRACK_ON(2, false),
     /** The SOLO button (7th position from the top, on the right side) */
-    SOLO(6, false),
+    SOLO(1, false),
     /** The ARM button (8th position from the top, on the right side) */
-    ARM(7, false);
+    ARM(0, false);
 
     /** Minimal coordinate for a button */
     public static final int MIN_COORD = 0;
@@ -64,7 +64,7 @@ public enum Button {
     /** Top-row buttons, in left-to-right order */
     public static final Button[] BUTTONS_TOP = {UP, DOWN, LEFT, RIGHT, SESSION, USER_1, USER_2, MIXER};
     /** Right-side buttons, in top-to-bottom order */
-    public static final Button[] BUTTONS_RIGHT = {VOL, PAN, SND_A, SND_B, STOP, TRACK_ON, SOLO, ARM};
+    public static final Button[] BUTTONS_RIGHT = {ARM, SOLO, TRACK_ON, STOP, SND_B, SND_A, PAN, VOL};
 
     /**
      * Factory method for a top-row button.
