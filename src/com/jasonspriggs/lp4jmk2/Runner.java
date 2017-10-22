@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.util.LinkedList;
 import java.util.Scanner;
 import java.util.concurrent.CountDownLatch;
 
@@ -14,6 +15,7 @@ public class Runner {
 
     private static CountDownLatch stop = new CountDownLatch(1);
     private static String ip;
+    private LinkedList<Light> lights = new LinkedList<Light>();
 
     public static void main(String[] args) throws Exception {
     	Launchpad launchpad = new MidiLaunchpad(MidiDeviceConfiguration.autodetect());
