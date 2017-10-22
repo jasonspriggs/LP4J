@@ -29,32 +29,30 @@ public final class Color {
     /** Minimal red or green component intensity */
     public static final int MIN_INTENSITY = 0;
     /** Maximal red or green component intensity */
-    public static final int MAX_INTENSITY = 7;
+    public static final int MAX_INTENSITY = 127;
 
     // Color cache
-    private static final Color[][] CACHE = new Color[8][8];
+    private static final Color[] CACHE = new Color[MAX_INTENSITY + 1];
 
     static {
-        for (int r = 0; r < 8; r++) {
-            for (int g = 0; g < 8; g++) {
-                CACHE[r][g] = new Color(r, g);
-            }
+        for (int v = 0; v <= MAX_INTENSITY; v++) {
+        	CACHE[v] = new Color(v);
         }
     }
 
     // Most used colors
     /** Black (red 0, green 0) */
-    public static final Color BLACK = CACHE[0][0];
+    public static final Color BLACK = CACHE[0];
     /** Red (red 3, green 0) */
-    public static final Color RED = CACHE[3][0];
+    public static final Color RED = CACHE[5];
     /** Green (red 0, green 3) */
-    public static final Color GREEN = CACHE[0][3];
+    public static final Color GREEN = CACHE[20];
     /** Orange (red 3, green 2) */
-    public static final Color ORANGE = CACHE[3][2];
+    public static final Color ORANGE = CACHE[9];
     /** Amber (red 3, green 3) */
-    public static final Color AMBER = CACHE[3][3];
+    public static final Color AMBER = CACHE[108];
     /** Yellow (red 2, green 3) */
-    public static final Color YELLOW = CACHE[2][3];
+    public static final Color YELLOW = CACHE[12];
 
     /**
      * Factory method
@@ -66,20 +64,15 @@ public final class Color {
      * @return The Color obtained by mixing the given red and green values.
      * @throws java.lang.IllegalArgumentException If the red or green parameters are out of acceptable range.
      */
-    public static Color of(int red, int green) {
-        if (red < MIN_INTENSITY || red > MAX_INTENSITY) {
-            throw new IllegalArgumentException("Invalid red value : " + red + ". Acceptable values are in range [0..3].");
+    public static Color of(int value) {
+        if (value < MIN_INTENSITY || value > MAX_INTENSITY) {
+            throw new IllegalArgumentException("Invalid red value : " + value + ". Acceptable values are in range [0..127].");
         }
-        if (green < MIN_INTENSITY || green > MAX_INTENSITY) {
-            throw new IllegalArgumentException("Invalid green value : " + green + ". Acceptable values are in range [0..3].");
-        }
-        return CACHE[red][green];
+        return CACHE[value];
     }
 
-    /** The red component intensity */
-    private final int red;
-    /** The green component intensity */
-    private final int green;
+    /** The color component intensity */
+    private final int value;
 
     /**
      * Constructor
@@ -87,27 +80,17 @@ public final class Color {
      * @param red The red component
      * @param green The green component
      */
-    private Color(int red, int green) {
-        this.red = red;
-        this.green = green;
+    private Color(int value) {
+        this.value = value;
     }
 
     /**
-     * Returns the red intensity
+     * Returns the color value
      *
-     * @return the red intensity
+     * @return the color value
      */
-    public int getRed() {
-        return red;
-    }
-
-    /**
-     * Returns the green intensity
-     *
-     * @return the green intensity
-     */
-    public int getGreen() {
-        return green;
+    public int getValue() {
+        return value;
     }
 
     @Override
@@ -119,13 +102,13 @@ public final class Color {
             return false;
         }
         Color color = (Color) o;
-        return green == color.green && red == color.red;
+        return value == color.value;
     }
 
     @Override
     public int hashCode() {
-        int result = red;
-        result = 31 * result + green;
+        int result = value;
+        result = 31 * result;
         return result;
     }
 }
