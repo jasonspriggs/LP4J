@@ -41,18 +41,15 @@ public final class Color {
     }
 
     // Most used colors
-    /** Black (red 0, green 0) */
     public static final Color BLACK = CACHE[0];
-    /** Red (red 3, green 0) */
     public static final Color RED = CACHE[5];
-    /** Green (red 0, green 3) */
-    public static final Color GREEN = CACHE[20];
-    /** Orange (red 3, green 2) */
+    public static final Color GREEN = CACHE[22];
     public static final Color ORANGE = CACHE[9];
-    /** Amber (red 3, green 3) */
-    public static final Color AMBER = CACHE[108];
-    /** Yellow (red 2, green 3) */
     public static final Color YELLOW = CACHE[12];
+    public static final Color BLUE = CACHE[43];
+    public static final Color PURPLE = CACHE[52];
+    public static final Color PINK = CACHE[57];
+    public static final Color AMBER = CACHE[61];
 
     /**
      * Factory method
